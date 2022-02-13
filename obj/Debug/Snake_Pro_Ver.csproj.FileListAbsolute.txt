@@ -1,0 +1,7 @@
+C:\Users\tzofi\source\repos\sayonarial\cs_lessons\Snake_Pro_Ver\bin\Debug\Snake_Pro_Ver.exe.config
+C:\Users\tzofi\source\repos\sayonarial\cs_lessons\Snake_Pro_Ver\bin\Debug\Snake_Pro_Ver.exe
+C:\Users\tzofi\source\repos\sayonarial\cs_lessons\Snake_Pro_Ver\bin\Debug\Snake_Pro_Ver.pdb
+C:\Users\tzofi\source\repos\sayonarial\cs_lessons\Snake_Pro_Ver\obj\Debug\Snake_Pro_Ver.csproj.AssemblyReference.cache
+C:\Users\tzofi\source\repos\sayonarial\cs_lessons\Snake_Pro_Ver\obj\Debug\Snake_Pro_Ver.csproj.CoreCompileInputs.cache
+C:\Users\tzofi\source\repos\sayonarial\cs_lessons\Snake_Pro_Ver\obj\Debug\Snake_Pro_Ver.exe
+C:\Users\tzofi\source\repos\sayonarial\cs_lessons\Snake_Pro_Ver\obj\Debug\Snake_Pro_Ver.pdb
