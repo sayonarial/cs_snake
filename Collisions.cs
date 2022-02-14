@@ -43,6 +43,11 @@ namespace Snake_Pro_Ver
             }
             return false;
         }
-        
+
+        public void ClearAll()
+        {
+            CollisionList.Clear();
+        }
+
     }
 }

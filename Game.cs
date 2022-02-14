@@ -28,10 +28,16 @@ namespace Snake_Pro_Ver
 
         //TImers
 
+        //solution path
+        string startupPath = Environment.CurrentDirectory;
+        
+        //sounds
+        System.Media.SoundPlayer hrumSound;
+        System.Media.SoundPlayer endSound;
 
         Collisions Collisions = new Collisions();
         Snake Snake;
-        Food Food = new Food(foodChar:'O');
+        Food Food;
         FoodCourt FoodCourt = new FoodCourt('O');
         Figure FreeSpace = new Figure(' '); //space for placing apples or figures
 
@@ -84,6 +90,9 @@ namespace Snake_Pro_Ver
                     new MenuItem("Exit", () => Environment.Exit(0))
                     });
 
+            startupPath = startupPath.Remove(startupPath.Length - 9, 9);
+            hrumSound  = new System.Media.SoundPlayer($@"{startupPath}eatFX.wav");
+            endSound  = new System.Media.SoundPlayer($@"{startupPath}theEnd.wav");
 
         }
 
@@ -152,12 +161,14 @@ namespace Snake_Pro_Ver
                 Snake.Add(new Pixel(Food.x,Food.y));
                 Food.Spawn(FreeSpace);
                 currentScore++;
+                hrumSound.Play();
             }
             else if(Snake.IsHit(FoodCourt) == true)
             {
                 Snake.Add(new Pixel(Snake.head.x, Snake.head.y));
                 FoodCourt.Remove(Snake.head);
                 currentScore++;
+                hrumSound.Play();
             }
             else if (Snake.IsHitItself())
             {
@@ -168,6 +179,7 @@ namespace Snake_Pro_Ver
 
                 if (Snake.GetPressCounts() == 0) GameOver(nothingWasPressed);
                 GameOver("Стены лбом не прошибешь");
+
             }
             else { 
                 Snake.Show();
@@ -202,6 +214,8 @@ namespace Snake_Pro_Ver
 
         void GameOver(string message) {
 
+            Console.WriteLine(startupPath);
+            endSound.Play();
             Console.Clear();
             Console.SetCursorPosition(sizeX / 2 - message.Length / 2, 5);
             Console.Write(message);
@@ -266,6 +280,9 @@ namespace Snake_Pro_Ver
         void CreateArena(int Arena)
         {
 
+            FreeSpace.ClearAll();
+            Collisions.ClearAll();
+            FoodCourt.ClearAll();
 
             //make simple frame
             Figure Frame = new Figure('▓');
@@ -290,8 +307,9 @@ namespace Snake_Pro_Ver
             switch (Arena)
             {
                 case 0: //classic frame with snake
-                    
+
                     //add first food in available space
+                    Food = new Food(foodChar: 'O');
                     Food.Spawn(FreeSpace);
 
                     break;
@@ -314,6 +332,7 @@ namespace Snake_Pro_Ver
                     FreeSpace.Remove(Rectangles);
 
                     //add first food in available space
+                    Food = new Food(foodChar: 'O');
                     Food.Spawn(FreeSpace);
 
                     break;
