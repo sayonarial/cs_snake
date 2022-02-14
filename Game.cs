@@ -38,10 +38,8 @@ namespace Snake_Pro_Ver
         Collisions Collisions = new Collisions();
         Snake Snake;
         Food Food;
-        FoodCourt FoodCourt = new FoodCourt('O');
+        FoodCourt FoodCourt = new FoodCourt('Ố');
         Figure FreeSpace = new Figure(' '); //space for placing apples or figures
-
-        string nothingWasPressed = "Дело не сдвинется с места, если ничего не предпринимать";
 
         enum  Status
         {
@@ -177,7 +175,7 @@ namespace Snake_Pro_Ver
             else if (Snake.IsHit(Collisions))
             {
 
-                if (Snake.GetPressCounts() == 0) GameOver(nothingWasPressed);
+               
                 GameOver("Стены лбом не прошибешь");
 
             }
@@ -309,13 +307,15 @@ namespace Snake_Pro_Ver
                 case 0: //classic frame with snake
 
                     //add first food in available space
-                    Food = new Food(foodChar: 'O');
+                    Food = new Food(foodChar: 'Ố');
                     Food.Spawn(FreeSpace);
 
                     break;
                 case 1: //Sprint - a lot of food
                     //spawn a lot of food
                     FoodCourt.SpawnFood(FreeSpace,150);
+                    Food = new Food(foodChar: 'Ố');
+                    Food.Spawn(FreeSpace);
 
                     break;
                 case 2: //rectangles spawn
@@ -332,7 +332,7 @@ namespace Snake_Pro_Ver
                     FreeSpace.Remove(Rectangles);
 
                     //add first food in available space
-                    Food = new Food(foodChar: 'O');
+                    Food = new Food(foodChar: 'Ố');
                     Food.Spawn(FreeSpace);
 
                     break;
